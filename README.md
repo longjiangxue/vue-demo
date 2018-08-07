@@ -29,13 +29,13 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-##READ ME
+## READ ME
 
 本项目使用的**vue-cli**脚手架生成，增加了axios发起网络请求。
 
 使用饿了么的 Elements组件。
 
- ###目录结构
+ ### 目录结构
       - build  脚手架生成  构建脚本
       - config  
          -  dev.env.js  开发环境脚本 
@@ -59,7 +59,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
       -package.json 依赖管理 
 
 
-###vue文件结构
+### vue文件结构
   *VUE*支持数据双向绑定，数据驱动视图。
    
 
