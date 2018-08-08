@@ -96,6 +96,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   codeUrl: 请求验证码的url（ api.js 中的值）
 
 ```
+效果图:  
         
 ![2018-08-0812121212121](http://pawutdr2l.bkt.clouddn.com/2018-08-0812121212121.png) 
           
