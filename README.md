@@ -77,4 +77,24 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
       - css
 
 
+### updadte 
+
+-- 2018/8/8 增加  请求验证码输入组件
+  
+     - src
+       - components
+        - common
+          - verfilyCode
+          
+    使用 引入组件，之后在 html 部分使用组件
+
+```    
+  <verfilyCode v-model="edition.code" :parentObejct="edition" codeUrl="phoneCode" ></verfilyCode>
+    
+  v-model : 绑定的验证码的属性值，
+  :parentObejct: form的整个对象  必须要phone字段，否则需要修改组件
+  codeUrl: 请求验证码的url（ api.js 中的值）
+
+```        
+          
 
