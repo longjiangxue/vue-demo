@@ -95,6 +95,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   :parentObejct: form的整个对象  必须要phone字段，否则需要修改组件
   codeUrl: 请求验证码的url（ api.js 中的值）
 
-```        
+```
+        
+![2018-08-0812121212121](http://pawutdr2l.bkt.clouddn.com/2018-08-0812121212121.png) 
+          
           
 
