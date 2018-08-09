@@ -35,6 +35,10 @@ axios.interceptors.request.use(
 // http response 拦截器
 axios.interceptors.response.use(
   (response) => {
+    // 如果是下载文件 则直接返回response 在postDownLoad 进行下载
+    if (response.headers && (response.headers['content-type'] === 'text/csv')) {
+      return response;
+    }
     response.data = JSON.parse(htmlEncodeByRegExp(JSON.stringify(response.data)));
     if (response.data.success === false) {
       return Promise.reject(response.data.msg);
@@ -144,4 +148,31 @@ export default {
       });
     });
   },
+  // 下载文件 使用的此方法 直接调用不处理业务，下载文件
+  postDownLoad(cgi, data) {
+    return new Promise((resolve, reject) => {
+      let param = {
+        uid: localStorage.getItem('uid'),
+        token: localStorage.getItem('token'),
+        data,
+      };
+      serviceNotoken.post(api[cgi], param, { responseType: 'blob' }).then((res) => {
+        console.log(api[cgi]);
+        console.log(res);
+        let blob = res.data;
+        let reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onload = (e) => {
+          let a = document.createElement('a');
+          a.download = 'fileName'; // 下载的文件名
+          a.href = e.target.result;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        };
+        // resolve(res);
+      }).catch((res) => {
+        reject(res);
+      });
+    });
 };

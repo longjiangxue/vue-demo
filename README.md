@@ -101,4 +101,26 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ![2018-08-0812121212121](http://pawutdr2l.bkt.clouddn.com/2018-08-0812121212121.png) 
           
           
+-- 2018/8/9  增加axios post 请求下载文件
 
+```
+ axios.interceptors.response.use方法增加对  content-type为文件类型不
+ 解析为json，直接返回原始response
+ 
+ 增加：postDownLoad 方法处理post下载文件
+  
+
+```
+使用:使用postDownLoad方法
+```javascript
+ 
+    exportExcel() {
+            let params = {
+              pram1: this.param1s,
+            };
+            API.postDownLoad('yourul', params).then((res) => {
+              // console.log(res);
+              // 这里不做任何事情
+            });
+          }
+```
