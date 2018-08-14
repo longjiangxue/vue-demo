@@ -124,3 +124,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
             });
           }
 ```
+
+
+--- 2018/8/14
+   
+   - 修复 axios post 下载大文件chrome下失败
+   - 增加axios get 方法下载文件 
+
+  原理： 通过增加a 标签，进行下载

@@ -165,7 +165,8 @@ export default {
         reader.onload = (e) => {
           let a = document.createElement('a');
           a.download = 'fileName'; // 下载的文件名
-          a.href = e.target.result;
+          let href = window.URL.createObjectURL(blob); // fix
+          a.href = href;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
@@ -175,4 +176,23 @@ export default {
         reject(res);
       });
     });
+  },
+  getDownLoad(cgi, data) {
+    return new Promise((resolve, reject) => {
+      serviceNotoken.get(api[cgi] + data, { responseType: 'blob' }).then((res) => {
+        let blob = res.data;
+        let downloadElement = document.createElement('a');
+        let href = window.URL.createObjectURL(blob); // 建立下载连接
+        downloadElement.href = href;
+        downloadElement.download = 'name.csv'; // 文件名
+        document.body.appendChild(downloadElement);
+        downloadElement.click(); // 点击下载
+        document.body.removeChild(downloadElement); // 移除元素
+        window.URL.revokeObjectURL(href); // 释放掉blob
+        resolve(res.data);
+      }).catch((res) => {
+        reject(res);
+      });
+    });
+  },
 };
